@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Media Management | Aura Circle</title>
+<link rel="icon" type="image/png" sizes="32x32" href="images/logoun.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/logoun.png">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/main.css">
+
+<style>
+/* Scroll Progress */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    width: 0%;
+    background: linear-gradient(90deg,#793ea5,#b16cea);
+    z-index: 9999;
+}
+
+/* Cards */
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 3rem;
+    margin-top: 6rem;
+}
+
+.service-card {
+    background: rgba(255,255,255,0.05);
+    padding: 3rem;
+    border-radius: 12px;
+    transition: 0.4s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 25px rgba(121,62,165,0.3);
+}
+
+/* Reveal */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Form */
+.custom-form {
+    max-width: 600px;
+    margin: 5rem auto 0;
+}
+.custom-form input,
+.custom-form textarea {
+    width: 100%;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    color: #fff;
+}
+.custom-form textarea {
+    min-height: 150px;
+}
+</style>
+</head>
+
+<body>
+    <div class="header-logo1">
+            <a class="site-logo" href="index.html">
+                <img src="images/unnamedrbg.png" alt="Homepage">
+            </a>
+        </div>
+
+<div class="scroll-progress"></div>
+
+<section class="s-contact">
+
+<div class="row section-header">
+<div class="col-full">
+<h3 class="subhead">Social Media Management</h3>
+<h1 class="display-1">Aura Circle is currently in beta mode. Some content and features are still being refined.
+We appreciate your visit and look forward to sharing the complete experience with you soon🩷.</h1>
+</div>
+</div>
+
+<div class="row">
+<div class="col-full service-grid">
+
+<div class="service-card reveal">
+<h3>Platform Strategy</h3>
+<p>Custom growth strategy for Instagram, LinkedIn and emerging platforms.</p>
+</div>
+
+<div class="service-card reveal">
+<h3>Content Scheduling</h3>
+<p>Consistent calendar built for engagement and brand recall.</p>
+</div>
+
+<div class="service-card reveal">
+<h3>Analytics & Reporting</h3>
+<p>Data-driven insights to maximize performance.</p>
+</div>
+
+</div>
+</div>
+
+
+
+<div class="row">
+  <div class="col-full stats-grid">
+
+    <div class="stat-item">
+      <h2 class="counter" data-target="250">0</h2>
+      <p>Campaigns Managed</p>
+    </div>
+
+    <div class="stat-item">
+      <h2 class="counter" data-target="1.5">0</h2>
+      <p>Million Reach Generated</p>
+    </div>
+
+    <div class="stat-item">
+      <h2 class="counter" data-target="300">0</h2>
+      <p>% Avg Engagement Boost</p>
+    </div>
+
+  </div>
+</div>
+
+<div class="row">
+<div class="col-full">
+
+<form class="custom-form reveal"
+      action="https://formspree.io/f/mzdvkqww"
+      method="POST">
+  <input type="hidden" name="service" value="Social Media Management">
+  <!-- Redirect -->
+  <input type="hidden" name="_next"
+         value="https://theauracircleagency.vercel.app/thank-you.html">
+
+  <!-- Honeypot -->
+  <input type="text" name="_gotcha" style="display:none">
+
+  <!-- Name Field -->
+  <input type="text"
+         name="name"
+         placeholder="Your Name"
+         required>
+
+  <!-- Email Field -->
+  <input type="email"
+         name="email"
+         placeholder="Your Email"
+         required>
+
+  <!-- Message -->
+  <textarea name="message"
+            placeholder="Tell us about your project..."
+            required></textarea>
+
+  <button class="btn btn--primary btn--large"
+          type="submit">
+    Send Message
+  </button>
+
+</form>
+
+</div>
+</div>
+
+</section>
+
+<script>
+/* Scroll Progress */
+window.addEventListener('scroll', () => {
+    const scrollTop = document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const progress = (scrollTop / scrollHeight) * 100;
+    document.querySelector('.scroll-progress').style.width = progress + "%";
+});
+
+/* Reveal */
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){ entry.target.classList.add('active'); }
+});
+},{threshold:0.2});
+reveals.forEach(r=>observer.observe(r));
+
+
+const counters = document.querySelectorAll('.counter');
+
+counters.forEach(counter => {
+  const updateCount = () => {
+    const target = +counter.getAttribute('data-target');
+    const count = +counter.innerText;
+    const increment = target / 100;
+
+    if(count < target){
+      counter.innerText = (count + increment).toFixed(1);
+      setTimeout(updateCount, 20);
+    } else {
+      counter.innerText = target;
+    }
+  };
+  updateCount();
+});
+
+
+</script>
+
+</body>
+</html>

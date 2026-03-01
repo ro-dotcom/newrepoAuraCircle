@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photography| Aura Circle</title>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="icon" type="image/png" sizes="32x32" href="images/logoun.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/logoun.png">
+
+<style>
+/* Scroll Progress */
+.growth-chart {
+  display:flex;
+  align-items:flex-end;
+  gap:20px;
+  height:200px;
+  margin-top:4rem;
+}
+
+.bar {
+  width:40px;
+  background: linear-gradient(to top,#793ea5,#b16cea);
+  transition:0.5s ease;
+}
+
+.bar:hover {
+  opacity:0.8;
+}
+</style>
+</head>
+
+<body>
+
+     <div class="header-logo1">
+            <a class="site-logo" href="index.html">
+                <img src="images/unnamedrbg.png" alt="Homepage">
+            </a>
+        </div>
+
+<div class="scroll-progress"></div>
+
+<section class="s-contact">
+
+<div class="row section-header">
+<div class="col-full">
+
+<h3 class="subhead">Growth & Optimization</h3>
+<h1 class="display-1">Aura Circle is currently in beta mode. Some content and features are still being refined.
+We appreciate your visit and look forward to sharing the complete experience with you soon🩷.</h1>
+</div>
+</div>
+
+<section class="service-details">
+    <div class="container">
+
+        <div class="service-grid">
+
+            <div class="service-card">
+                <h3>Social Media Content</h3>
+                <p>High-quality posts, reels and storytelling tailored for your audience.</p>
+            </div>
+
+            <div class="service-card">
+                <h3>Video Production</h3>
+                <p>Professional video editing and motion graphics for modern brands.</p>
+            </div>
+
+            <div class="service-card">
+                <h3>Brand Storytelling</h3>
+                <p>Creative scripts and content strategies that connect emotionally.</p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<div class="row">
+<div class="col-full">
+
+<form class="custom-form reveal"
+      action="https://formspree.io/f/mzdvkqww"
+      method="POST">
+  <input type="hidden" name="service" value="Social Media Management">
+  <!-- Redirect -->
+  <input type="hidden" name="_next"
+         value="https://theauracircleagency.vercel.app/thank-you.html">
+
+  <!-- Honeypot -->
+  <input type="text" name="_gotcha" style="display:none">
+
+  <!-- Name Field -->
+  <input type="text"
+         name="name"
+         placeholder="Your Name"
+         required>
+
+  <!-- Email Field -->
+  <input type="email"
+         name="email"
+         placeholder="Your Email"
+         required>
+
+  <!-- Message -->
+  <textarea name="message"
+            placeholder="Tell us about your project..."
+            required></textarea>
+
+  <button class="btn btn--primary btn--large"
+          type="submit">
+    Send Message
+  </button>
+
+</form>
+
+</div>
+</div>
+
+</section>
+
+<script>
+/* Scroll Progress */
+window.addEventListener('scroll', () => {
+    const scrollTop = document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const progress = (scrollTop / scrollHeight) * 100;
+    document.querySelector('.scroll-progress').style.width = progress + "%";
+});
+
+/* Reveal */
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){ entry.target.classList.add('active'); }
+});
+},{threshold:0.2});
+reveals.forEach(r=>observer.observe(r));
+</script>
+
+</body>
+</html>
